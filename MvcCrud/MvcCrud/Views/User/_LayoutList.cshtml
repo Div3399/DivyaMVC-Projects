@@ -1,0 +1,29 @@
+﻿@model List<MvcCrud.Data.Employee>
+
+<table class="table table-responsive">
+    <tr>
+        <th>EmployeeID</th>
+        <th>Employee Name</th>
+        <th>Gender</th>
+        <th>Address</th>
+        <th>EmailID</th>
+        <th>PinCode</th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.EmpID</td>
+            <td>@item.EmpName</td>
+            <td>@item.Gender</td>
+            <td>@item.Address1</td>
+            <td>@item.Email</td>
+            <td>@item.ZipCode</td>
+            <td>
+                @Html.ActionLink("Edit", "Edit",  new {id=item.EmpID})
+                @Html.ActionLink("Delete", "Delete", new {id=item.EmpID})
+            </td>
+        </tr>
+    }
+
+</table>

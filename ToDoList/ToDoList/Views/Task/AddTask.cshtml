@@ -1,0 +1,33 @@
+﻿@model ToDoList.Context.TaskList
+@{
+    ViewBag.Title = "TaskList";
+}
+
+@using (Html.BeginForm("AddTask", "Task", FormMethod.Post))
+{
+    <div class=" container">
+
+        <div class="form-group">
+            <label>TaskTitle</label>
+            @Html.TextBoxFor(t => t.TaskTitle, new { @class = "form-control" })
+        </div>
+
+        <div class="form-group">
+            <label>Task Description</label>
+            @Html.TextAreaFor(t => t.TaskDescription, new { @class = "form-control" })
+        </div>
+
+        <div class="form-group">
+            <label>Created date</label>
+            @Html.TextBoxFor(t => t.CreateDate, new { @class = "form-control" })
+        </div>
+
+        <div class="form-group">
+            <button type="submit" class="btn btn-success">Submit</button>
+            <button type="reset" class="btn btn-danger">Cancel</button>
+        </div>
+
+    </div>
+
+}
+

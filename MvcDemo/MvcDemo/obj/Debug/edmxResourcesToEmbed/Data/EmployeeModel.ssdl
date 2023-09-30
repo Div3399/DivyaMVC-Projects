@@ -1,0 +1,286 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Weltectemployees2Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="BankDetails">
+    <Key>
+      <PropertyRef Name="BankId" />
+    </Key>
+    <Property Name="BankId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="EmployeeId" Type="int" Nullable="false" />
+    <Property Name="BankAccountNo" Type="nvarchar" MaxLength="50" />
+    <Property Name="EmployeeName" Type="nvarchar" MaxLength="300" />
+    <Property Name="BankName" Type="nvarchar" MaxLength="150" />
+    <Property Name="Branch" Type="nvarchar" MaxLength="150" />
+    <Property Name="AccountType" Type="nvarchar" MaxLength="100" />
+    <Property Name="IFSCCode" Type="nvarchar" MaxLength="50" />
+    <Property Name="MICRNo" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="BloodGroupMaster">
+    <Key>
+      <PropertyRef Name="BloodGroupId" />
+    </Key>
+    <Property Name="BloodGroupId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="BGName" Type="nvarchar" MaxLength="150" />
+    <Property Name="IsActive" Type="bit" />
+  </EntityType>
+  <EntityType Name="CasteMaster">
+    <Key>
+      <PropertyRef Name="CasteId" />
+    </Key>
+    <Property Name="CasteId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CasteName" Type="nvarchar" MaxLength="150" />
+    <Property Name="IsActive" Type="bit" />
+  </EntityType>
+  <EntityType Name="CategoryMaster">
+    <Key>
+      <PropertyRef Name="CategoryId" />
+    </Key>
+    <Property Name="CategoryId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CategoryName" Type="nvarchar" MaxLength="500" />
+    <Property Name="IsActive" Type="bit" />
+  </EntityType>
+  <EntityType Name="CityMaster">
+    <Key>
+      <PropertyRef Name="CityId" />
+    </Key>
+    <Property Name="CityId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="StateId" Type="int" />
+    <Property Name="CityName" Type="nvarchar" MaxLength="150" />
+    <Property Name="IsActive" Type="bit" />
+  </EntityType>
+  <EntityType Name="ContactDetails">
+    <Key>
+      <PropertyRef Name="ContactId" />
+    </Key>
+    <Property Name="ContactId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="EmployeeId" Type="int" />
+    <Property Name="HomeAddress" Type="nvarchar(max)" />
+    <Property Name="MobileNo" Type="nvarchar" MaxLength="100" />
+    <Property Name="LandlineNo" Type="nvarchar" MaxLength="100" />
+    <Property Name="EmailId" Type="nvarchar" MaxLength="100" />
+    <Property Name="SkypeId" Type="nvarchar" MaxLength="100" />
+    <Property Name="SlackId" Type="nvarchar" MaxLength="100" />
+    <Property Name="LinkedlnId" Type="nvarchar" MaxLength="100" />
+    <Property Name="OfficeAddress" Type="nvarchar(max)" />
+    <Property Name="CountryId" Type="int" />
+    <Property Name="StateId" Type="int" />
+    <Property Name="CityId" Type="int" />
+  </EntityType>
+  <EntityType Name="CountryMaster">
+    <Key>
+      <PropertyRef Name="CountryId" />
+    </Key>
+    <Property Name="CountryId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CountryName" Type="nvarchar" MaxLength="150" />
+    <Property Name="IsActive" Type="bit" />
+  </EntityType>
+  <EntityType Name="EducationDetails">
+    <Key>
+      <PropertyRef Name="EducationId" />
+    </Key>
+    <Property Name="EducationId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="EmployeeId" Type="int" Nullable="false" />
+    <Property Name="Qualification" Type="nvarchar" MaxLength="150" />
+    <Property Name="School" Type="nvarchar" MaxLength="300" />
+    <Property Name="College" Type="nvarchar" MaxLength="300" />
+    <Property Name="PassOutYear" Type="nvarchar" MaxLength="20" />
+    <Property Name="Subject/Field" Type="nvarchar" MaxLength="150" />
+    <Property Name="Percentage" Type="decimal" Precision="18" Scale="0" />
+    <Property Name="Grade" Type="nvarchar" MaxLength="10" />
+  </EntityType>
+  <EntityType Name="EmpData">
+    <Key>
+      <PropertyRef Name="Empid" />
+    </Key>
+    <Property Name="Empid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="300" />
+    <Property Name="PhoneNo" Type="nvarchar" MaxLength="50" />
+    <Property Name="EmailId" Type="nvarchar" MaxLength="150" />
+    <Property Name="IsActive" Type="bit" />
+  </EntityType>
+  <EntityType Name="ExperienceDetails">
+    <Key>
+      <PropertyRef Name="ExperienceId" />
+    </Key>
+    <Property Name="ExperienceId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="EmployeeId" Type="int" Nullable="false" />
+    <Property Name="Occupation" Type="nvarchar" MaxLength="150" />
+    <Property Name="DateofJoining" Type="date" />
+    <Property Name="Experience" Type="nvarchar" MaxLength="150" />
+    <Property Name="Designation" Type="nvarchar" MaxLength="150" />
+    <Property Name="CurrentCompany" Type="nvarchar" MaxLength="150" />
+    <Property Name="Sector" Type="nvarchar" MaxLength="150" />
+    <Property Name="PreviousCompany" Type="nvarchar" MaxLength="150" />
+  </EntityType>
+  <EntityType Name="Login">
+    <Key>
+      <PropertyRef Name="LoginId" />
+    </Key>
+    <Property Name="LoginId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserName" Type="nvarchar" MaxLength="50" />
+    <Property Name="Password" Type="nvarchar" MaxLength="50" />
+    <Property Name="RoleId" Type="int" />
+    <Property Name="EmployeeId" Type="int" />
+    <Property Name="IsActive" Type="bit" />
+  </EntityType>
+  <EntityType Name="Marks">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Subid" Type="int" />
+    <Property Name="StidentId" Type="int" />
+    <Property Name="Marks" Type="int" />
+    <Property Name="TotalMarks" Type="int" />
+  </EntityType>
+  <EntityType Name="OtherDetails">
+    <Key>
+      <PropertyRef Name="OtherId" />
+    </Key>
+    <Property Name="OtherId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="DrivingLicenceNo" Type="nvarchar" MaxLength="50" />
+    <Property Name="AadharNo" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="PersonalDetails">
+    <Key>
+      <PropertyRef Name="EmployeeId" />
+    </Key>
+    <Property Name="EmployeeId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="FirstName" Type="nvarchar" MaxLength="100" />
+    <Property Name="MiddleName" Type="nvarchar" MaxLength="100" />
+    <Property Name="LastName" Type="nvarchar" MaxLength="100" />
+    <Property Name="DateofBirth" Type="date" />
+    <Property Name="Age" Type="int" />
+    <Property Name="Father/HusbandName" Type="nvarchar" MaxLength="300" />
+    <Property Name="Gender" Type="nvarchar" MaxLength="50" />
+    <Property Name="MaritialStatus" Type="nvarchar" MaxLength="50" />
+    <Property Name="Citizenship" Type="nvarchar" MaxLength="50" />
+    <Property Name="Height" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="Weight" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="BloodGroupId" Type="int" />
+    <Property Name="CasteId" Type="int" />
+    <Property Name="SubCasteId" Type="int" />
+    <Property Name="ReligionId" Type="int" />
+    <Property Name="CreateBy" Type="int" />
+    <Property Name="CreateOn" Type="datetime" />
+    <Property Name="UpdateBy" Type="int" />
+    <Property Name="UpdateOn" Type="datetime" />
+    <Property Name="IsActive" Type="bit" />
+  </EntityType>
+  <EntityType Name="ReligionMaster">
+    <Key>
+      <PropertyRef Name="ReligionId" />
+    </Key>
+    <Property Name="ReligionId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ReligionName" Type="nvarchar" MaxLength="150" />
+    <Property Name="IsActive" Type="bit" />
+  </EntityType>
+  <EntityType Name="ResultData">
+    <Key>
+      <PropertyRef Name="Resultid" />
+    </Key>
+    <Property Name="Resultid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ExId" Type="int" />
+    <Property Name="StudentId" Type="int" />
+    <Property Name="Percentage" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="TotalMarks" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="Total" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="Grade" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="StateMaster">
+    <Key>
+      <PropertyRef Name="StateId" />
+    </Key>
+    <Property Name="StateId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CountryId" Type="int" />
+    <Property Name="StateName" Type="nvarchar" MaxLength="150" />
+    <Property Name="IsActive" Type="bit" />
+  </EntityType>
+  <EntityType Name="SubCasteMaster">
+    <Key>
+      <PropertyRef Name="SubCasteId" />
+    </Key>
+    <Property Name="SubCasteId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CasteId" Type="int" />
+    <Property Name="SubCasteName" Type="nvarchar" MaxLength="150" />
+    <Property Name="IsActive" Type="bit" />
+  </EntityType>
+  <EntityType Name="UserMaster">
+    <Key>
+      <PropertyRef Name="UserId" />
+    </Key>
+    <Property Name="UserId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="300" />
+    <Property Name="PhoneNo" Type="nvarchar" MaxLength="20" />
+    <Property Name="Address" Type="nvarchar(max)" />
+    <Property Name="EmailId" Type="nvarchar" MaxLength="150" />
+  </EntityType>
+  <Association Name="FK_PersonalDetails_CasteMaster">
+    <End Role="CasteMaster" Type="Self.CasteMaster" Multiplicity="0..1" />
+    <End Role="PersonalDetails" Type="Self.PersonalDetails" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CasteMaster">
+        <PropertyRef Name="CasteId" />
+      </Principal>
+      <Dependent Role="PersonalDetails">
+        <PropertyRef Name="CasteId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PersonalDetails_SubCasteMaster">
+    <End Role="SubCasteMaster" Type="Self.SubCasteMaster" Multiplicity="0..1" />
+    <End Role="PersonalDetails" Type="Self.PersonalDetails" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SubCasteMaster">
+        <PropertyRef Name="SubCasteId" />
+      </Principal>
+      <Dependent Role="PersonalDetails">
+        <PropertyRef Name="SubCasteId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_StateMaster_CountryMaster">
+    <End Role="CountryMaster" Type="Self.CountryMaster" Multiplicity="0..1" />
+    <End Role="StateMaster" Type="Self.StateMaster" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CountryMaster">
+        <PropertyRef Name="CountryId" />
+      </Principal>
+      <Dependent Role="StateMaster">
+        <PropertyRef Name="CountryId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="Weltectemployees2ModelStoreContainer">
+    <EntitySet Name="BankDetails" EntityType="Self.BankDetails" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="BloodGroupMaster" EntityType="Self.BloodGroupMaster" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CasteMaster" EntityType="Self.CasteMaster" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CategoryMaster" EntityType="Self.CategoryMaster" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CityMaster" EntityType="Self.CityMaster" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ContactDetails" EntityType="Self.ContactDetails" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CountryMaster" EntityType="Self.CountryMaster" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="EducationDetails" EntityType="Self.EducationDetails" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="EmpData" EntityType="Self.EmpData" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ExperienceDetails" EntityType="Self.ExperienceDetails" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Login" EntityType="Self.Login" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Marks" EntityType="Self.Marks" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="OtherDetails" EntityType="Self.OtherDetails" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PersonalDetails" EntityType="Self.PersonalDetails" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ReligionMaster" EntityType="Self.ReligionMaster" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ResultData" EntityType="Self.ResultData" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="StateMaster" EntityType="Self.StateMaster" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SubCasteMaster" EntityType="Self.SubCasteMaster" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="UserMaster" EntityType="Self.UserMaster" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_PersonalDetails_CasteMaster" Association="Self.FK_PersonalDetails_CasteMaster">
+      <End Role="CasteMaster" EntitySet="CasteMaster" />
+      <End Role="PersonalDetails" EntitySet="PersonalDetails" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PersonalDetails_SubCasteMaster" Association="Self.FK_PersonalDetails_SubCasteMaster">
+      <End Role="SubCasteMaster" EntitySet="SubCasteMaster" />
+      <End Role="PersonalDetails" EntitySet="PersonalDetails" />
+    </AssociationSet>
+    <AssociationSet Name="FK_StateMaster_CountryMaster" Association="Self.FK_StateMaster_CountryMaster">
+      <End Role="CountryMaster" EntitySet="CountryMaster" />
+      <End Role="StateMaster" EntitySet="StateMaster" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

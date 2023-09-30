@@ -1,0 +1,88 @@
+﻿@model MvcCrud.Data.Employee
+
+@{
+    ViewBag.Title = "Add";
+}
+
+@using (Html.BeginForm("Add", "User", FormMethod.Post))
+{
+    <div class="container">
+        <div class="alert alert-info">
+            <h3>Employee Details</h3>
+
+            <div class="form-group">
+                <label>Employee Name</label>
+                @Html.TextBoxFor(x => x.EmpName, new { @class = "form-control" })
+            </div>
+
+
+            <div class="form-group">
+                <label>Birthdate</label>
+                @Html.TextBoxFor(x => x.Birthdate, new { @class = "form-control" })
+            </div>
+
+            <div class="form-group">
+                <label>Salary</label>
+                @Html.TextBoxFor(x => x.Salary, new { @class = "form-control" })
+            </div>
+
+            <div class="form-group">
+                <label>Gender</label>
+                @Html.TextBoxFor(x => x.Gender, new { @class = "form-control" })
+            </div>
+
+
+            <div class="form-group">
+                <label>Permanent Address</label>
+                @Html.TextAreaFor(x => x.Address1, new { @class = "form-control" })
+            </div>
+
+            <div class="form-group">
+                <label>Current Address</label>
+                @Html.TextAreaFor(x => x.Address2, new { @class = "form-control" })
+            </div>
+
+
+            <div class="form-group">
+                <label>City</label>
+                @Html.TextBoxFor(x => x.City, new { @class = "form-control" })
+            </div>
+
+            <div class="form-group">
+                <label>State</label>
+                @Html.TextBoxFor(x => x.State, new { @class = "form-control" })
+            </div>
+
+            <div class="form-group">
+                <label>Country</label>
+                @Html.TextBoxFor(x => x.Country, new { @class = "form-control" })
+            </div>
+
+            <div class="form-group">
+                <label>Email ID</label>
+                @Html.TextBoxFor(x => x.Email, new { @class = "form-control" })
+            </div>
+
+
+            <div class="form-group">
+                <label>PinCode</label>
+                @Html.TextBoxFor(x => x.ZipCode, new { @class = "form-control" })
+            </div>
+
+            <br />
+
+            <button type="submit" class="btn btn-primary">Submit</button>
+            <button type="reset" class="btn btn-danger">Cancel</button>
+        </div>
+    </div>
+}
+
+<h4>Employee List</h4>
+<div>
+    @{ 
+        var data = ViewBag.Emplist as List<MvcCrud.Data.Employee>;
+    }
+    @Html.Partial("_LayoutList",data)
+</div>
+
+

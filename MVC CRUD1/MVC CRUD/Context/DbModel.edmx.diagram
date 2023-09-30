@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="0b5e29e310a64c14a724aab0d34f3d70" Name="Diagram1">
+        <EntityTypeShape EntityType="Weltectemployees2Model.BankDetail" Width="1.5" PointX="5.75" PointY="4.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="Weltectemployees2Model.BloodGroupMaster" Width="1.5" PointX="0.75" PointY="8.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="Weltectemployees2Model.CasteMaster" Width="1.5" PointX="0.75" PointY="3.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="Weltectemployees2Model.CategoryMaster" Width="1.5" PointX="2.75" PointY="8.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="Weltectemployees2Model.CityMaster" Width="1.5" PointX="7.75" PointY="4.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="Weltectemployees2Model.ContactDetail" Width="1.5" PointX="4.75" PointY="8.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="Weltectemployees2Model.CountryMaster" Width="1.5" PointX="5.75" PointY="1.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="Weltectemployees2Model.EducationDetail" Width="1.5" PointX="7.75" PointY="7.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="Weltectemployees2Model.EmpData" Width="1.5" PointX="9.75" PointY="4.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="Weltectemployees2Model.ExperienceDetail" Width="1.5" PointX="9.75" PointY="7.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="Weltectemployees2Model.Login" Width="1.5" PointX="10.75" PointY="1.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="Weltectemployees2Model.Mark" Width="1.5" PointX="0.75" PointY="11.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="Weltectemployees2Model.offer" Width="1.5" PointX="6.75" PointY="11.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="Weltectemployees2Model.OtherDetail" Width="1.5" PointX="8.75" PointY="11.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="Weltectemployees2Model.PersonalDetail" Width="1.5" PointX="3" PointY="1.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="Weltectemployees2Model.Product" Width="1.5" PointX="10.75" PointY="11.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="Weltectemployees2Model.ReligionMaster" Width="1.5" PointX="11.75" PointY="4.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="Weltectemployees2Model.ResultData" Width="1.5" PointX="11.75" PointY="7.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="Weltectemployees2Model.StateMaster" Width="1.5" PointX="8" PointY="1.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Weltectemployees2Model.SubCasteMaster" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Weltectemployees2Model.UserMaster" Width="1.5" PointX="12.75" PointY="1.625" IsExpanded="true" />
+        <AssociationConnector Association="Weltectemployees2Model.FK_PersonalDetails_CasteMaster" ManuallyRouted="false" />
+        <AssociationConnector Association="Weltectemployees2Model.FK_StateMaster_CountryMaster" ManuallyRouted="false" />
+        <AssociationConnector Association="Weltectemployees2Model.FK_PersonalDetails_SubCasteMaster" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

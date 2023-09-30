@@ -1,0 +1,29 @@
+﻿@model List<ToDoList.Context.TaskList>
+
+@{
+    ViewBag.Title = "Tolist";
+}
+
+<table class="table  table-hover">
+    <tr>
+        <th>TaskId</th>
+        <th>TaskTitle</th>
+        <th>TaskDescription</th>
+        <th>Created Date</th>
+        
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.TaskId</td>
+            <td>@item.TaskTitle</td>
+            <td>@item.TaskDescription</td>
+            <td>@item.CreateDate</td>
+          
+        </tr>
+
+    }
+
+</table>
+

@@ -1,0 +1,230 @@
+﻿@model MVCPractical.Employee
+
+<link href="@Url.Content("~/Content/Custom.css")" rel="stylesheet" type="text/css" />
+<link href="@Url.Content("~/Content/Site.css")" rel="stylesheet" type="text/css" />
+<link href="@Url.Content("~/Scripts/jquery-ui.css")" rel="stylesheet" type="text/css" />
+
+<script src="@Url.Content("~/Scripts/jquery-3.2.1.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/Scripts/jquery-ui.min.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/Scripts/jquery.validate.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/Scripts/jquery.validate.unobtrusive.js")" type="text/javascript"></script>
+
+
+@using (Html.BeginForm())
+{
+    @Html.ValidationSummary(true)
+    //@Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.EmpID)
+        @Html.HiddenFor(model => model.State,new { id="hdnState"})
+        @Html.HiddenFor(model => model.EmpName)
+
+        <div class="FullWidth">
+            <div class="FirstColumn">
+                Name
+            </div>
+            <div class="editor-field">
+                
+                @Html.EditorFor(model => model.EmpName)
+                @Html.ValidationMessageFor(model => model.EmpName, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="FullWidth">
+            <div class="FirstColumn">
+                Gender
+            </div>
+            <div class="FirstColumn">
+                @Html.RadioButtonFor(model => model.Gender, "M", new { @Id = "rdoGender" }) Male
+                @Html.RadioButtonFor(model => model.Gender, "F", new { @Id = "rdoGender" }) Female
+            </div>
+            <div class="FirstColumn" style="padding-left:20px">
+                Birth Date
+            </div>
+            <div class="editor-field">
+                @Html.TextBoxFor(model => model.Birthdate)
+                @Html.ValidationMessageFor(model => model.Birthdate, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="FullWidth">
+            <div class="FirstColumn">
+                Email
+            </div>
+            <div class="FirstColumn">
+                @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+            </div>
+            <div class="FirstColumn" style="padding-left:20px">
+                Salary
+            </div>
+            <div class="editor-field">
+                @Html.EditorFor(model => model.Salary)
+                @Html.ValidationMessageFor(model => model.Salary, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="FullWidth">
+            <div class="form-group">
+                @Html.LabelFor(model => model.Address1, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Address1, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Address1, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.Address2, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Address2, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Address2, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.City, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.City, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.City, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.ZipCode, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.ZipCode, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.ZipCode, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        @*<div class="form-group">
+            @Html.LabelFor(model => model.Country, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">            
+                @Html.DropDownList("Countries", ViewBag.CountryList as SelectList, "Select Country", new { id = "Country" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.State, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("State", new SelectList(string.Empty, "Value", "Text"), "Please select", new { style = "width:250px", @class = "dropdown1" })
+            </div>
+        </div>*@
+        <div class="FullWidth">
+            <div class="FirstColumn">
+                Country
+            </div>
+            <div class="FirstColumn">
+                @Html.DropDownList("Countries", ViewBag.CountryList as SelectList, "Select Country", new { id = "Country" })
+                @*@Html.DropDownListFor("Text")*@
+            </div>
+
+            <div class="FirstColumn" style="padding-left:20px">
+                State
+            </div>
+            <div class="editor-field">
+                @Html.DropDownList("State", new SelectList(string.Empty, "Value", "Text"), "Please select a State", new { style = "width:250px", @class = "dropdown1" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Save" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Close", "Index")
+</div>
+
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("span.ui-dialog-title").text('Edit Employee - ' + $("#EmpName").val());
+
+        $("#Birthdate").datepicker({
+            maxDate: "-18Y",
+            dateFormat: "mm/dd/yy",
+            changeMonth: true,
+            changeYear: true
+
+        });
+    });
+
+
+    function SaveEmployee() {
+
+        var EmpName = $("#EmpName").val();
+        var Birthdate = $("#Birthdate").val();
+        var Gender = $("#rboGender").val();
+        var Salary = $("#Salary").val();
+        var Address1 = $("#Address1").val();
+        var Address2 = $("#Address2").val();
+        var City = $("#City").val();
+        var State = $("#State option:selected").text();// $("#State").val();
+        var ZipCode = $("#ZipCode").val();
+        var Country = $("#Country option:selected").text();// $("#Country").val();
+        var Email = $("#Email").val();
+
+        var Employee = {
+            "EmpName": EmpName,
+            "Birthdate": Birthdate,
+            "Gender": Gender,
+            "Salary": Salary,
+            "Address1": Address1,
+            "Address2": Address2,
+            "City": City,
+            "State": State,
+            "ZipCode": ZipCode,
+            "Country": Country
+        };
+
+        $.post("/EmployeeInfo/Edit", Employee,
+        function (data) { if (data == 0) { location = location.href; } }, 'json');
+    }
+
+    $(document).ready(function () {
+
+        //Dropdownlist Selectedchange event
+        $("#Country").change(function () {
+             FillStates();
+           
+        });
+
+        FillStates();
+    });
+
+    function FillStates() {
+
+        var SelectedState = $("#hdnState").val();
+
+        if (SelectedState == null || SelectedState == undefined)
+            SelectedState = '';
+
+        $("#State").empty();
+        $.ajax({
+            type: 'POST',
+            url: '@Url.Action("GetStates")', // we are calling json method
+            dataType: 'json',
+            data: { id: $("#Country").val()},
+            success: function (states) {
+                $.each(states, function (i, state) {
+                    if (state.Text == SelectedState) {
+                        $("#State").append('<option selected value="' + state.Value + '">' + state.Text + '</option>');
+                    }
+                    else {
+                        $("#State").append('<option value="' + state.Value + '">' + state.Text + '</option>');
+                    }
+
+                });
+            },
+            error: function (ex) {
+                alert('Failed to retrieve states.' + ex);
+            }
+        });
+        return false;
+    }
+</script>

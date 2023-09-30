@@ -1,0 +1,292 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Weltectemployees2Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="BankDetail">
+    <Key>
+      <PropertyRef Name="BankId" />
+    </Key>
+    <Property Name="BankId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="EmployeeId" Type="Int32" Nullable="false" />
+    <Property Name="BankAccountNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="EmployeeName" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+    <Property Name="BankName" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="Branch" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="AccountType" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="IFSCCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="MICRNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="BloodGroupMaster">
+    <Key>
+      <PropertyRef Name="BloodGroupId" />
+    </Key>
+    <Property Name="BloodGroupId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="BGName" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="IsActive" Type="Boolean" />
+  </EntityType>
+  <EntityType Name="CasteMaster">
+    <Key>
+      <PropertyRef Name="CasteId" />
+    </Key>
+    <Property Name="CasteId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CasteName" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="IsActive" Type="Boolean" />
+    <NavigationProperty Name="PersonalDetails" Relationship="Self.FK_PersonalDetails_CasteMaster" FromRole="CasteMaster" ToRole="PersonalDetails" />
+  </EntityType>
+  <EntityType Name="CategoryMaster">
+    <Key>
+      <PropertyRef Name="CategoryId" />
+    </Key>
+    <Property Name="CategoryId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CategoryName" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="IsActive" Type="Boolean" />
+  </EntityType>
+  <EntityType Name="CityMaster">
+    <Key>
+      <PropertyRef Name="CityId" />
+    </Key>
+    <Property Name="CityId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="StateId" Type="Int32" />
+    <Property Name="CityName" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="IsActive" Type="Boolean" />
+  </EntityType>
+  <EntityType Name="ContactDetail">
+    <Key>
+      <PropertyRef Name="ContactId" />
+    </Key>
+    <Property Name="ContactId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="EmployeeId" Type="Int32" />
+    <Property Name="HomeAddress" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="MobileNo" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="LandlineNo" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="EmailId" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="SkypeId" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="SlackId" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="LinkedlnId" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="OfficeAddress" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="CountryId" Type="Int32" />
+    <Property Name="StateId" Type="Int32" />
+    <Property Name="CityId" Type="Int32" />
+  </EntityType>
+  <EntityType Name="CountryMaster">
+    <Key>
+      <PropertyRef Name="CountryId" />
+    </Key>
+    <Property Name="CountryId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CountryName" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="IsActive" Type="Boolean" />
+    <NavigationProperty Name="StateMasters" Relationship="Self.FK_StateMaster_CountryMaster" FromRole="CountryMaster" ToRole="StateMaster" />
+  </EntityType>
+  <EntityType Name="EducationDetail">
+    <Key>
+      <PropertyRef Name="EducationId" />
+    </Key>
+    <Property Name="EducationId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="EmployeeId" Type="Int32" Nullable="false" />
+    <Property Name="Qualification" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="School" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+    <Property Name="College" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+    <Property Name="PassOutYear" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="Subject_Field" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="Percentage" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="Grade" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="EmpData">
+    <Key>
+      <PropertyRef Name="Empid" />
+    </Key>
+    <Property Name="Empid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+    <Property Name="PhoneNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="EmailId" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="IsActive" Type="Boolean" />
+  </EntityType>
+  <EntityType Name="ExperienceDetail">
+    <Key>
+      <PropertyRef Name="ExperienceId" />
+    </Key>
+    <Property Name="ExperienceId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="EmployeeId" Type="Int32" Nullable="false" />
+    <Property Name="Occupation" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="DateofJoining" Type="DateTime" Precision="0" />
+    <Property Name="Experience" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="Designation" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="CurrentCompany" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="Sector" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="PreviousCompany" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="Login">
+    <Key>
+      <PropertyRef Name="LoginId" />
+    </Key>
+    <Property Name="LoginId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="RoleId" Type="Int32" />
+    <Property Name="EmployeeId" Type="Int32" />
+    <Property Name="IsActive" Type="Boolean" />
+  </EntityType>
+  <EntityType Name="Mark">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Subid" Type="Int32" />
+    <Property Name="StidentId" Type="Int32" />
+    <Property Name="Marks" Type="Int32" />
+    <Property Name="TotalMarks" Type="Int32" />
+  </EntityType>
+  <EntityType Name="OtherDetail">
+    <Key>
+      <PropertyRef Name="OtherId" />
+    </Key>
+    <Property Name="OtherId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="DrivingLicenceNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="AadharNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="PersonalDetail">
+    <Key>
+      <PropertyRef Name="EmployeeId" />
+    </Key>
+    <Property Name="EmployeeId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="FirstName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="MiddleName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="LastName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="DateofBirth" Type="DateTime" Precision="0" />
+    <Property Name="Age" Type="Int32" />
+    <Property Name="Father_HusbandName" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+    <Property Name="Gender" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="MaritialStatus" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Citizenship" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Height" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="Weight" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="BloodGroupId" Type="Int32" />
+    <Property Name="CasteId" Type="Int32" />
+    <Property Name="SubCasteId" Type="Int32" />
+    <Property Name="ReligionId" Type="Int32" />
+    <Property Name="CreateBy" Type="Int32" />
+    <Property Name="CreateOn" Type="DateTime" Precision="3" />
+    <Property Name="UpdateBy" Type="Int32" />
+    <Property Name="UpdateOn" Type="DateTime" Precision="3" />
+    <Property Name="IsActive" Type="Boolean" />
+    <NavigationProperty Name="CasteMaster" Relationship="Self.FK_PersonalDetails_CasteMaster" FromRole="PersonalDetails" ToRole="CasteMaster" />
+    <NavigationProperty Name="SubCasteMaster" Relationship="Self.FK_PersonalDetails_SubCasteMaster" FromRole="PersonalDetails" ToRole="SubCasteMaster" />
+  </EntityType>
+  <EntityType Name="ReligionMaster">
+    <Key>
+      <PropertyRef Name="ReligionId" />
+    </Key>
+    <Property Name="ReligionId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ReligionName" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="IsActive" Type="Boolean" />
+  </EntityType>
+  <EntityType Name="ResultData">
+    <Key>
+      <PropertyRef Name="Resultid" />
+    </Key>
+    <Property Name="Resultid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ExId" Type="Int32" />
+    <Property Name="StudentId" Type="Int32" />
+    <Property Name="Percentage" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="TotalMarks" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="Total" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="Grade" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="StateMaster">
+    <Key>
+      <PropertyRef Name="StateId" />
+    </Key>
+    <Property Name="StateId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CountryId" Type="Int32" />
+    <Property Name="StateName" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="IsActive" Type="Boolean" />
+    <NavigationProperty Name="CountryMaster" Relationship="Self.FK_StateMaster_CountryMaster" FromRole="StateMaster" ToRole="CountryMaster" />
+  </EntityType>
+  <EntityType Name="SubCasteMaster">
+    <Key>
+      <PropertyRef Name="SubCasteId" />
+    </Key>
+    <Property Name="SubCasteId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CasteId" Type="Int32" />
+    <Property Name="SubCasteName" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="IsActive" Type="Boolean" />
+    <NavigationProperty Name="PersonalDetails" Relationship="Self.FK_PersonalDetails_SubCasteMaster" FromRole="SubCasteMaster" ToRole="PersonalDetails" />
+  </EntityType>
+  <EntityType Name="UserMaster">
+    <Key>
+      <PropertyRef Name="UserId" />
+    </Key>
+    <Property Name="UserId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+    <Property Name="PhoneNo" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="Address" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="EmailId" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <Association Name="FK_PersonalDetails_CasteMaster">
+    <End Role="CasteMaster" Type="Self.CasteMaster" Multiplicity="0..1" />
+    <End Role="PersonalDetails" Type="Self.PersonalDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CasteMaster">
+        <PropertyRef Name="CasteId" />
+      </Principal>
+      <Dependent Role="PersonalDetails">
+        <PropertyRef Name="CasteId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_StateMaster_CountryMaster">
+    <End Role="CountryMaster" Type="Self.CountryMaster" Multiplicity="0..1" />
+    <End Role="StateMaster" Type="Self.StateMaster" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CountryMaster">
+        <PropertyRef Name="CountryId" />
+      </Principal>
+      <Dependent Role="StateMaster">
+        <PropertyRef Name="CountryId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PersonalDetails_SubCasteMaster">
+    <End Role="SubCasteMaster" Type="Self.SubCasteMaster" Multiplicity="0..1" />
+    <End Role="PersonalDetails" Type="Self.PersonalDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SubCasteMaster">
+        <PropertyRef Name="SubCasteId" />
+      </Principal>
+      <Dependent Role="PersonalDetails">
+        <PropertyRef Name="SubCasteId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="Weltectemployees2Entities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="BankDetails" EntityType="Self.BankDetail" />
+    <EntitySet Name="BloodGroupMasters" EntityType="Self.BloodGroupMaster" />
+    <EntitySet Name="CasteMasters" EntityType="Self.CasteMaster" />
+    <EntitySet Name="CategoryMasters" EntityType="Self.CategoryMaster" />
+    <EntitySet Name="CityMasters" EntityType="Self.CityMaster" />
+    <EntitySet Name="ContactDetails" EntityType="Self.ContactDetail" />
+    <EntitySet Name="CountryMasters" EntityType="Self.CountryMaster" />
+    <EntitySet Name="EducationDetails" EntityType="Self.EducationDetail" />
+    <EntitySet Name="EmpDatas" EntityType="Self.EmpData" />
+    <EntitySet Name="ExperienceDetails" EntityType="Self.ExperienceDetail" />
+    <EntitySet Name="Logins" EntityType="Self.Login" />
+    <EntitySet Name="Marks" EntityType="Self.Mark" />
+    <EntitySet Name="OtherDetails" EntityType="Self.OtherDetail" />
+    <EntitySet Name="PersonalDetails" EntityType="Self.PersonalDetail" />
+    <EntitySet Name="ReligionMasters" EntityType="Self.ReligionMaster" />
+    <EntitySet Name="ResultDatas" EntityType="Self.ResultData" />
+    <EntitySet Name="StateMasters" EntityType="Self.StateMaster" />
+    <EntitySet Name="SubCasteMasters" EntityType="Self.SubCasteMaster" />
+    <EntitySet Name="UserMasters" EntityType="Self.UserMaster" />
+    <AssociationSet Name="FK_PersonalDetails_CasteMaster" Association="Self.FK_PersonalDetails_CasteMaster">
+      <End Role="CasteMaster" EntitySet="CasteMasters" />
+      <End Role="PersonalDetails" EntitySet="PersonalDetails" />
+    </AssociationSet>
+    <AssociationSet Name="FK_StateMaster_CountryMaster" Association="Self.FK_StateMaster_CountryMaster">
+      <End Role="CountryMaster" EntitySet="CountryMasters" />
+      <End Role="StateMaster" EntitySet="StateMasters" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PersonalDetails_SubCasteMaster" Association="Self.FK_PersonalDetails_SubCasteMaster">
+      <End Role="SubCasteMaster" EntitySet="SubCasteMasters" />
+      <End Role="PersonalDetails" EntitySet="PersonalDetails" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

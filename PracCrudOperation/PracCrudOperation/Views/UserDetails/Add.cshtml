@@ -1,0 +1,64 @@
+﻿@model PracCrudOperation.Models.tbluser
+
+@{
+    ViewBag.Title = "Add";
+}
+
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-12 col-lg-8">
+            <div class="card">
+                <div class="card-body">
+                    <div class="text-lg-center">
+                        <h3 class="text-bg-secondary">EMPLOYEE DETAILS</h3>
+                    </div>
+                    @using (Html.BeginForm("Add", "UserDetails", FormMethod.Post))
+                    {
+                        <div class="justify-content-center">
+                            <div class="mb-3">
+                                <label class="form-label">FirstName</label>
+                                <div class="col-lg-12">
+                                    @Html.TextBoxFor(x => x.FirstName, new { @Class = "form-control" })
+                                </div>
+                            </div>
+
+                            <div class="mb-3">
+                                <label class="form-label">LastName</label>
+                                <div class="col-md-10">
+                                    @Html.TextBoxFor(x => x.LastName, new { @Class = "form-control" })
+                                </div>
+                            </div>
+
+                            <div class="mb-3">
+                                <label class="form-label">Age</label>
+                                <div class="col-md-10">
+                                    @Html.TextBoxFor(x => x.Age, new { @Class = "form-control" })
+                                </div>
+                            </div>
+
+                            <div class="mb-3">
+                                <label class="form-label">Gender</label>
+                                <div class="col-md-10">
+                                    @Html.TextBoxFor(x => x.Gender, new { @Class = "form-control" })
+                                </div>
+                            </div>
+
+                            <br>
+                            <div class="text-center">
+                                <button type="submit" class=" btn btn-primary">Submit</button>
+                                <button type="reset" class="btn btn-danger">Cancel</button>
+                            </div>
+                        </div>
+                    }
+                    <div>
+                        @{
+                            var data = ViewBag.ListUser as List<PracCrudOperation.Models.tbluser>;
+                        }
+                        @Html.Partial("_ListView",data);
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

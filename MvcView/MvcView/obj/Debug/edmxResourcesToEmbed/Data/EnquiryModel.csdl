@@ -1,0 +1,507 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="ClinicDataModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="DoctorByClinic">
+    <Key>
+      <PropertyRef Name="DCID" />
+    </Key>
+    <Property Name="DCID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ClinicID" Type="Int32" />
+    <Property Name="DoctorID" Type="Int32" />
+    <Property Name="UpdateID" Type="Int32" />
+    <Property Name="Updatetime" Type="DateTime" Precision="3" />
+    <Property Name="IsActivr" Type="Boolean" />
+    <Property Name="IsDeactive" Type="Boolean" />
+  </EntityType>
+  <EntityType Name="Enquiry">
+    <Key>
+      <PropertyRef Name="EnquiryID" />
+    </Key>
+    <Property Name="EnquiryID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CatId" Type="Int32" />
+    <Property Name="Sourceid" Type="Int32" />
+    <Property Name="PurposeId" Type="Int32" />
+    <Property Name="ClinicID" Type="Int32" />
+    <Property Name="Enquiryno" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
+    <Property Name="EnquiryDate" Type="DateTime" Precision="3" />
+    <Property Name="FirstName" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="LastName" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="DateBirth" Type="DateTime" Precision="3" />
+    <Property Name="Age" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
+    <Property Name="Gender" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="Address" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="CountryId" Type="Int32" />
+    <Property Name="stateid" Type="Int32" />
+    <Property Name="Cityid" Type="Int32" />
+    <Property Name="Area" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="Email" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Mobile" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+    <Property Name="Telephone" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+    <Property Name="ReceivedByEmpId" Type="Int32" />
+    <Property Name="AssignToEmpId" Type="Int32" />
+    <Property Name="RoleID" Type="Int32" />
+    <Property Name="TelecallerToEmpId" Type="Int32" />
+    <Property Name="Status" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Folllowupdate" Type="DateTime" Precision="3" />
+    <Property Name="InterestLevel" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="InterestLevelCode" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+    <Property Name="Conversation" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="CreatedBy" Type="Int32" />
+    <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+    <Property Name="ModifiedBy" Type="Int32" />
+    <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+    <Property Name="IsPatient" Type="Boolean" />
+    <Property Name="IsActive" Type="Boolean" />
+    <Property Name="TreatmentID" Type="Int32" />
+    <Property Name="Pstatus" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Orders" Relationship="Self.FK__Orders__EnquiryI__6477ECF3" FromRole="Enquiry" ToRole="Orders" />
+  </EntityType>
+  <EntityType Name="InvoiceDetail">
+    <Key>
+      <PropertyRef Name="Invoiceid" />
+    </Key>
+    <Property Name="Invoiceid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="InvoiceNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="patientid" Type="Int32" />
+    <Property Name="DoctorID" Type="Int32" />
+    <Property Name="TreatmentID" Type="Int32" />
+    <Property Name="Unit" Type="Int32" />
+    <Property Name="Cost" Type="Decimal" Precision="10" Scale="2" />
+    <Property Name="Discount" Type="Decimal" Precision="10" Scale="2" />
+    <Property Name="Tax" Type="Decimal" Precision="10" Scale="2" />
+    <Property Name="TotalCost" Type="Decimal" Precision="10" Scale="2" />
+    <Property Name="TotalDiscount" Type="Decimal" Precision="10" Scale="2" />
+    <Property Name="TotalCostAmount" Type="Decimal" Precision="10" Scale="2" />
+    <Property Name="TotalTax" Type="Decimal" Precision="10" Scale="2" />
+    <Property Name="GrandTotal" Type="Decimal" Precision="10" Scale="2" />
+    <Property Name="PayDate" Type="DateTime" Precision="3" />
+    <Property Name="PayMode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="InvoiceMaster">
+    <Key>
+      <PropertyRef Name="InvoiceTid" />
+    </Key>
+    <Property Name="InvoiceTid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="InvoiceNo" Type="Int32" />
+    <Property Name="InvoiceCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="patientid" Type="Int32" />
+    <Property Name="DoctorID" Type="Int32" />
+    <Property Name="ClinicID" Type="Int32" />
+    <Property Name="TotalCost" Type="Decimal" Precision="10" Scale="2" />
+    <Property Name="TotalDiscount" Type="Decimal" Precision="10" Scale="2" />
+    <Property Name="TotalCostAmount" Type="Decimal" Precision="10" Scale="2" />
+    <Property Name="TotalTax" Type="Decimal" Precision="10" Scale="2" />
+    <Property Name="GrandTotal" Type="Decimal" Precision="10" Scale="2" />
+    <Property Name="PaidAmount" Type="Decimal" Precision="10" Scale="2" />
+    <Property Name="PendingAmount" Type="Decimal" Precision="10" Scale="2" />
+    <Property Name="PayDate" Type="DateTime" Precision="3" />
+    <Property Name="CreateDate" Type="DateTime" Precision="3" />
+    <Property Name="CreateID" Type="Int32" />
+    <Property Name="PendingF" Type="Boolean" />
+  </EntityType>
+  <EntityType Name="Order">
+    <Key>
+      <PropertyRef Name="OrderID" />
+    </Key>
+    <Property Name="OrderID" Type="Int32" Nullable="false" />
+    <Property Name="OrderNumber" Type="Int32" Nullable="false" />
+    <Property Name="EnquiryID" Type="Int32" />
+    <NavigationProperty Name="Enquiry" Relationship="Self.FK__Orders__EnquiryI__6477ECF3" FromRole="Orders" ToRole="Enquiry" />
+  </EntityType>
+  <EntityType Name="PatientMaster">
+    <Key>
+      <PropertyRef Name="patientid" />
+    </Key>
+    <Property Name="patientid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="PatientCode" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+    <Property Name="EnquiryId" Type="Int32" />
+    <Property Name="ClinicID" Type="Int32" />
+    <Property Name="RegistrationDate" Type="DateTime" Precision="3" />
+    <Property Name="FName" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+    <Property Name="LastName" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+    <Property Name="Gender" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="BOD" Type="DateTime" Precision="3" />
+    <Property Name="BloodGroup" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="Age" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="Address" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Area" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="CountryId" Type="Int32" />
+    <Property Name="stateid" Type="Int32" />
+    <Property Name="Cityid" Type="Int32" />
+    <Property Name="Email" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+    <Property Name="Mobile" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+    <Property Name="Telephone" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+    <Property Name="ProfileImage" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="CreatedBy" Type="Int32" />
+    <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+    <Property Name="ModifiedBy" Type="Int32" />
+    <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+    <Property Name="IsActive" Type="Boolean" />
+    <Property Name="PCstatus" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="registrationToken" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="tbl_ClinicDetails">
+    <Key>
+      <PropertyRef Name="ClinicID" />
+    </Key>
+    <Property Name="ClinicID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ClinicName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="AddressLine1" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="AddressLine2" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="CityID" Type="Int32" />
+    <Property Name="CountryID" Type="Int32" />
+    <Property Name="StateID" Type="Int32" />
+    <Property Name="LocationID" Type="Int32" />
+    <Property Name="PhoneNo2" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="PhoneNo1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="OpenTime" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="CloseTime" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="DayOfWeek" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="EmailID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="DoctorID" Type="Int32" />
+    <Property Name="ModifiedDate" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ModifiedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="IsActive" Type="Boolean" />
+    <Property Name="FirstName" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+    <Property Name="LastName" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+    <Property Name="IsApprove" Type="Boolean" />
+  </EntityType>
+  <EntityType Name="tbl_DoctorDetails">
+    <Key>
+      <PropertyRef Name="DoctorID" />
+    </Key>
+    <Property Name="DoctorID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="DoctorTypeID" Type="Int32" />
+    <Property Name="ClinicID" Type="Int32" />
+    <Property Name="RegDate" Type="DateTime" Precision="3" />
+    <Property Name="FirstName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="MiddleName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="LastName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Gender" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="Email" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="BloodGroup" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="Mobile1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Mobile2" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Residential_Address" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="Line1" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Line2" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="CountryID" Type="Int32" />
+    <Property Name="StateID" Type="Int32" />
+    <Property Name="CityID" Type="Int32" />
+    <Property Name="LocationID" Type="Int32" />
+    <Property Name="ModifiedDate" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ModifiedBy" Type="Int32" />
+    <Property Name="IsActive" Type="Boolean" />
+    <Property Name="OTP" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="IsDeleted" Type="Boolean" />
+    <Property Name="AreaPin" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="UserName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="DOB" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="RegistrationNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="PanCardNo" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="PanCardImageUrl" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+    <Property Name="AdharCardNo" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="AdharCardImageUrl" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+    <Property Name="ProfileImageUrl" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+    <Property Name="RegistrationImageUrl" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+    <Property Name="IdentityPolicyNo" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="IdentityPolicyImageUrl" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+    <Property Name="RoleID" Type="Int32" />
+    <Property Name="CreatedDate" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="InTime" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="OutTime" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="IsExistUser" Type="Boolean" />
+    <Property Name="isTermAccept" Type="Boolean" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tblEmployeeBankDetail">
+    <Key>
+      <PropertyRef Name="EmployeeBankID" />
+    </Key>
+    <Property Name="EmployeeBankID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="EmployeeID" Type="Int64" />
+    <Property Name="BankName" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="BranchName" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="IFSC_Code" Type="String" MaxLength="11" FixedLength="false" Unicode="true" />
+    <Property Name="AccountNumber" Type="String" MaxLength="17" FixedLength="false" Unicode="true" />
+    <Property Name="AccountHolderName" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="tblEmployeeContactDetail">
+    <Key>
+      <PropertyRef Name="ContactID" />
+    </Key>
+    <Property Name="ContactID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="EmployeeID" Type="Int64" />
+    <Property Name="CurrentAddress" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="CurrentLandmark" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="CurrentCountry" Type="Int32" />
+    <Property Name="CurrentState" Type="Int32" />
+    <Property Name="CurrentCity" Type="Int32" />
+    <Property Name="CurrentPinCode" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="PermanentAddress" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="PermanentLandmark" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="PermanentCountry" Type="Int32" />
+    <Property Name="PermanentState" Type="Int32" />
+    <Property Name="PermanentCity" Type="Int32" />
+    <Property Name="PermanentPinCode" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="ResidentPhone" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+    <Property Name="Mobile" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+    <Property Name="Email" Type="String" MaxLength="350" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="tblEmployeeOtherDetail">
+    <Key>
+      <PropertyRef Name="OtherID" />
+    </Key>
+    <Property Name="OtherID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="EmployeeID" Type="Int32" />
+    <Property Name="AadhaarNo" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+    <Property Name="PassportNo" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+    <Property Name="DrivinglicenceNo" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+    <Property Name="Documentimg" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="tblEmployeePersonal">
+    <Key>
+      <PropertyRef Name="EmployeeID" />
+    </Key>
+    <Property Name="EmployeeID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ClinicID" Type="Int32" />
+    <Property Name="EmployeeCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="RegistrationDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="FirstName" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="MiddleName" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="Surname" Type="String" MaxLength="500" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Gender" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Religion" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Emp_Cast" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="BloodGroup" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="BirthDate" Type="DateTime" Precision="3" />
+    <Property Name="Nationality" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="EmployeePhoto" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+    <Property Name="IsActive" Type="Int32" />
+    <Property Name="DateCreated" Type="DateTime" Precision="3" />
+    <Property Name="DateModified" Type="DateTime" Precision="3" />
+    <Property Name="CreatedBy" Type="Int32" />
+    <Property Name="ModifiedBy" Type="Int32" />
+    <Property Name="CreatAdmin" Type="Int64" />
+    <Property Name="UserName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="IsAdminLogin" Type="Boolean" />
+  </EntityType>
+  <EntityType Name="EnquiryBackup_17062023">
+    <Key>
+      <PropertyRef Name="EnquiryID" />
+      <PropertyRef Name="Email" />
+    </Key>
+    <Property Name="EnquiryID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CatId" Type="Int32" />
+    <Property Name="Sourceid" Type="Int32" />
+    <Property Name="PurposeId" Type="Int32" />
+    <Property Name="ClinicID" Type="Int32" />
+    <Property Name="Enquiryno" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
+    <Property Name="EnquiryDate" Type="DateTime" Precision="3" />
+    <Property Name="FirstName" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="LastName" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="DateBirth" Type="DateTime" Precision="3" />
+    <Property Name="Age" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
+    <Property Name="Gender" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="Address" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="CountryId" Type="Int32" />
+    <Property Name="stateid" Type="Int32" />
+    <Property Name="Cityid" Type="Int32" />
+    <Property Name="Area" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="Email" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Mobile" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+    <Property Name="Telephone" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+    <Property Name="ReceivedByEmpId" Type="Int32" />
+    <Property Name="AssignToEmpId" Type="Int32" />
+    <Property Name="RoleID" Type="Int32" />
+    <Property Name="TelecallerToEmpId" Type="Int32" />
+    <Property Name="Status" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Folllowupdate" Type="DateTime" Precision="3" />
+    <Property Name="InterestLevel" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="InterestLevelCode" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+    <Property Name="Conversation" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="CreatedBy" Type="Int32" />
+    <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+    <Property Name="ModifiedBy" Type="Int32" />
+    <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+    <Property Name="IsPatient" Type="Boolean" />
+    <Property Name="IsActive" Type="Boolean" />
+    <Property Name="TreatmentID" Type="Int32" />
+    <Property Name="Pstatus" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="EnquiryBackup14102021">
+    <Key>
+      <PropertyRef Name="EnquiryID" />
+      <PropertyRef Name="Email" />
+    </Key>
+    <Property Name="EnquiryID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CatId" Type="Int32" />
+    <Property Name="Sourceid" Type="Int32" />
+    <Property Name="PurposeId" Type="Int32" />
+    <Property Name="ClinicID" Type="Int32" />
+    <Property Name="Enquiryno" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
+    <Property Name="EnquiryDate" Type="DateTime" Precision="3" />
+    <Property Name="FirstName" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="LastName" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="DateBirth" Type="DateTime" Precision="3" />
+    <Property Name="Age" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
+    <Property Name="Gender" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="Address" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="CountryId" Type="Int32" />
+    <Property Name="stateid" Type="Int32" />
+    <Property Name="Cityid" Type="Int32" />
+    <Property Name="Area" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="Email" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Mobile" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+    <Property Name="Telephone" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+    <Property Name="ReceivedByEmpId" Type="Int32" />
+    <Property Name="AssignToEmpId" Type="Int32" />
+    <Property Name="RoleID" Type="Int32" />
+    <Property Name="TelecallerToEmpId" Type="Int32" />
+    <Property Name="Status" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Folllowupdate" Type="DateTime" Precision="3" />
+    <Property Name="InterestLevel" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="InterestLevelCode" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+    <Property Name="Conversation" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="CreatedBy" Type="Int32" />
+    <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+    <Property Name="ModifiedBy" Type="Int32" />
+    <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+    <Property Name="IsPatient" Type="Boolean" />
+    <Property Name="IsActive" Type="Boolean" />
+    <Property Name="TreatmentID" Type="Int32" />
+    <Property Name="Pstatus" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="tbl_DoctorDetailsBackup_17062023">
+    <Key>
+      <PropertyRef Name="DoctorID" />
+      <PropertyRef Name="isTermAccept" />
+    </Key>
+    <Property Name="DoctorID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="DoctorTypeID" Type="Int32" />
+    <Property Name="ClinicID" Type="Int32" />
+    <Property Name="RegDate" Type="DateTime" Precision="3" />
+    <Property Name="FirstName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="MiddleName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="LastName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Gender" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="Email" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="BloodGroup" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="Mobile1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Mobile2" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Residential_Address" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="Line1" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Line2" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="CountryID" Type="Int32" />
+    <Property Name="StateID" Type="Int32" />
+    <Property Name="CityID" Type="Int32" />
+    <Property Name="LocationID" Type="Int32" />
+    <Property Name="ModifiedDate" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ModifiedBy" Type="Int32" />
+    <Property Name="IsActive" Type="Boolean" />
+    <Property Name="OTP" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="IsDeleted" Type="Boolean" />
+    <Property Name="AreaPin" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="UserName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="DOB" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="RegistrationNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="PanCardNo" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="PanCardImageUrl" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+    <Property Name="AdharCardNo" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="AdharCardImageUrl" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+    <Property Name="ProfileImageUrl" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+    <Property Name="RegistrationImageUrl" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+    <Property Name="IdentityPolicyNo" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="IdentityPolicyImageUrl" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+    <Property Name="RoleID" Type="Int32" />
+    <Property Name="CreatedDate" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="InTime" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="OutTime" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="IsExistUser" Type="Boolean" />
+    <Property Name="isTermAccept" Type="Boolean" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tbl_DoctorDetailsBackup_170620232">
+    <Key>
+      <PropertyRef Name="DoctorID" />
+      <PropertyRef Name="isTermAccept" />
+    </Key>
+    <Property Name="DoctorID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="DoctorTypeID" Type="Int32" />
+    <Property Name="ClinicID" Type="Int32" />
+    <Property Name="RegDate" Type="DateTime" Precision="3" />
+    <Property Name="FirstName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="MiddleName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="LastName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Gender" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="Email" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="BloodGroup" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="Mobile1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Mobile2" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Residential_Address" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="Line1" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Line2" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="CountryID" Type="Int32" />
+    <Property Name="StateID" Type="Int32" />
+    <Property Name="CityID" Type="Int32" />
+    <Property Name="LocationID" Type="Int32" />
+    <Property Name="ModifiedDate" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ModifiedBy" Type="Int32" />
+    <Property Name="IsActive" Type="Boolean" />
+    <Property Name="OTP" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="IsDeleted" Type="Boolean" />
+    <Property Name="AreaPin" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="UserName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="DOB" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="RegistrationNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="PanCardNo" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="PanCardImageUrl" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+    <Property Name="AdharCardNo" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="AdharCardImageUrl" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+    <Property Name="ProfileImageUrl" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+    <Property Name="RegistrationImageUrl" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+    <Property Name="IdentityPolicyNo" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="IdentityPolicyImageUrl" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+    <Property Name="RoleID" Type="Int32" />
+    <Property Name="CreatedDate" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="InTime" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="OutTime" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="IsExistUser" Type="Boolean" />
+    <Property Name="isTermAccept" Type="Boolean" Nullable="false" />
+  </EntityType>
+  <Association Name="FK__Orders__EnquiryI__6477ECF3">
+    <End Role="Enquiry" Type="Self.Enquiry" Multiplicity="0..1" />
+    <End Role="Orders" Type="Self.Order" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Enquiry">
+        <PropertyRef Name="EnquiryID" />
+      </Principal>
+      <Dependent Role="Orders">
+        <PropertyRef Name="EnquiryID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="ClinicDataEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="DoctorByClinics" EntityType="Self.DoctorByClinic" />
+    <EntitySet Name="Enquiries" EntityType="Self.Enquiry" />
+    <EntitySet Name="InvoiceDetails" EntityType="Self.InvoiceDetail" />
+    <EntitySet Name="InvoiceMasters" EntityType="Self.InvoiceMaster" />
+    <EntitySet Name="Orders" EntityType="Self.Order" />
+    <EntitySet Name="PatientMasters" EntityType="Self.PatientMaster" />
+    <EntitySet Name="tbl_ClinicDetails" EntityType="Self.tbl_ClinicDetails" />
+    <EntitySet Name="tbl_DoctorDetails" EntityType="Self.tbl_DoctorDetails" />
+    <EntitySet Name="tblEmployeeBankDetails" EntityType="Self.tblEmployeeBankDetail" />
+    <EntitySet Name="tblEmployeeContactDetails" EntityType="Self.tblEmployeeContactDetail" />
+    <EntitySet Name="tblEmployeeOtherDetails" EntityType="Self.tblEmployeeOtherDetail" />
+    <EntitySet Name="tblEmployeePersonals" EntityType="Self.tblEmployeePersonal" />
+    <EntitySet Name="EnquiryBackup_17062023" EntityType="Self.EnquiryBackup_17062023" />
+    <EntitySet Name="EnquiryBackup14102021" EntityType="Self.EnquiryBackup14102021" />
+    <EntitySet Name="tbl_DoctorDetailsBackup_17062023" EntityType="Self.tbl_DoctorDetailsBackup_17062023" />
+    <EntitySet Name="tbl_DoctorDetailsBackup_170620232" EntityType="Self.tbl_DoctorDetailsBackup_170620232" />
+    <AssociationSet Name="FK__Orders__EnquiryI__6477ECF3" Association="Self.FK__Orders__EnquiryI__6477ECF3">
+      <End Role="Enquiry" EntitySet="Enquiries" />
+      <End Role="Orders" EntitySet="Orders" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

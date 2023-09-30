@@ -1,0 +1,29 @@
+﻿@model List<PracCrudOperation.Models.tbluser>
+
+<table class="table table-info">
+    <tr>
+        <th>UserId</th>
+        <th>FirstName</th>
+        <th>LastName</th>
+        <th>Age</th>
+        <th>Gender</th>
+        <th>Action</th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.UserId</td>
+            <td>@item.FirstName</td>
+            <td>@item.LastName</td>
+            <td>@item.Age</td>
+            <td>@item.Gender</td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.UserId })
+                @Html.ActionLink("Delete", "Delete", new { id = item.UserId })
+            </td>
+
+        </tr>
+
+    }
+</table>

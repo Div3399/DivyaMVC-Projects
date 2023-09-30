@@ -1,0 +1,198 @@
+﻿@model MVCPractical.Employee
+<link href="@Url.Content("~/Content/Custom.css")" rel="stylesheet" type="text/css" />
+<link href="@Url.Content("~/Content/Site.css")" rel="stylesheet" type="text/css" />
+<link href="@Url.Content("~/Scripts/jquery-ui.css")" rel="stylesheet" type="text/css" />
+
+<script src="@Url.Content("~/Scripts/jquery-3.2.1.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/Scripts/jquery-ui.min.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/Scripts/jquery.validate.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/Scripts/jquery.validate.unobtrusive.js")" type="text/javascript"></script>
+
+@using (Html.BeginForm(new { id = "CreateEmployee" }))
+{
+    @Html.ValidationSummary(true)
+    <div class="form-horizontal">
+        <div class="FullWidth">
+            <div class="FirstColumn">
+                Name
+            </div>
+            <div class="editor-field">
+                @Html.EditorFor(model => model.EmpName)
+                @Html.ValidationMessageFor(model => model.EmpName)
+            </div>
+
+        </div>
+        <div class="FullWidth">
+            <div class="FirstColumn">
+                Gender
+            </div>
+            <div class="FirstColumn">
+                @Html.RadioButtonFor(model => model.Gender, "M", new { @Id = "rdoGender", @checked = true }) Male
+                @Html.RadioButtonFor(model => model.Gender, "F", new { @Id = "rdoGender" }) Female
+            </div>
+            <div class="FirstColumn" style="padding-left:20px">
+                Birth Date
+            </div>
+            <div class="editor-field">
+                @Html.TextBoxFor(model => model.Birthdate, new { @id = "Birthdate", @readonly = "readonly" })
+                @Html.ValidationMessageFor(model => model.Birthdate)
+            </div>
+        </div>
+        <div class="FullWidth">
+            <div class="FirstColumn">
+                Email
+            </div>
+            <div class="FirstColumn">
+                @Html.TextBoxFor(model => model.Email)
+                @Html.ValidationMessageFor(model => model.Email)
+            </div>
+            <div class="FirstColumn" style="padding-left:20px">
+                Salary
+            </div>
+            <div class="editor-field">
+                @Html.TextBoxFor(model => model.Salary, new { style = "text-align: right" })
+                @Html.ValidationMessageFor(model => model.Salary)
+            </div>
+        </div>
+        <div class="FullWidth">
+            <div class="FirstColumn">
+                Address 1
+            </div>
+            <div class="editor-field">
+                @Html.TextAreaFor(model => model.Address1, new { rows = "3", cols = "100" })            @Html.ValidationMessageFor(model => model.Address1)
+            </div>
+        </div>
+        <div class="FullWidth">
+            <div class="FirstColumn">
+                Address 2
+            </div>
+            <div class="editor-field">
+                @Html.TextAreaFor(model => model.Address2, new { rows = "3", cols = "100" })
+                @Html.ValidationMessageFor(model => model.Address2)
+            </div>
+        </div>
+        <div class="FullWidth">
+            <div class="FirstColumn">
+                City
+            </div>
+            <div class="FirstColumn">
+                @Html.TextBoxFor(model => model.City)
+                @Html.ValidationMessageFor(model => model.City)
+            </div>
+            <div class="FirstColumn" style="padding-left:20px">
+                Zipcode
+            </div>
+            <div class="editor-field">
+                @Html.TextBoxFor(model => model.ZipCode)
+                @Html.ValidationMessageFor(model => model.ZipCode)
+            </div>
+        </div>
+        <div class="FullWidth">
+            <div class="FirstColumn">
+                Country
+            </div>
+            <div class="FirstColumn">
+                @Html.DropDownList("Countries", ViewBag.CountryList as SelectList, "Select Country", new { id = "Country" })
+                @*@Html.DropDownListFor("Text")*@
+            </div>
+
+            <div class="FirstColumn" style="padding-left:20px">
+                State
+            </div>
+            <div class="editor-field">
+                @Html.DropDownList("State", new SelectList(string.Empty, "Value", "Text"), "Please select a State", new { style = "width:250px", @class = "dropdown1" })
+            </div>
+        </div>
+        <div class="FullWidth">
+            <div class="FirstColumn" style="padding-left:70%;">
+                <input type="submit" value="Save" onclick="SaveEmployee()" />
+            </div>
+            <div style="padding-left:80%;">
+                @*@Html.ActionLink("Close", "Index")*@
+                <input type="button" value="Close"
+                       onclick="@("window.location.href='" + @Url.Action("Index", "EmployeeInfo") + "'");" />
+            </div>
+        </div>
+
+    </div>
+}
+
+
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("#Birthdate").datepicker({
+            maxDate: "-18Y",
+            dateFormat: "mm/dd/yy",
+            changeMonth: true,
+            changeYear: true
+
+        });
+    });
+
+
+    function SaveEmployee() {
+        var CreateEmployee = $("#CreateEmployee");
+        if (CreateEmployee.valid() == true) {
+            var EmpName = $("#EmpName").val();
+            var Birthdate = $("#Birthdate").val();
+            var Gender = $("#rboGender").val();
+            var Salary = $("#Salary").val();
+            var Address1 = $("#Address1").val();
+            var Address2 = $("#Address2").val();
+            var City = $("#City").val();
+            var State = $("#State option:selected").text();// $("#State").val();
+            var ZipCode = $("#ZipCode").val();
+            var Country = $("#Country option:selected").text();// $("#Country").val();
+            var Email = $("#Email").val();
+
+            var Employee = {
+                "EmpName": EmpName,
+                "Birthdate": Birthdate,
+                "Gender": Gender,
+                "Salary": Salary,
+                "Address1": Address1,
+                "Address2": Address2,
+                "City": City,
+                "State": State,
+                "ZipCode": ZipCode,
+                "Country": Country
+            };
+
+            $.post("/EmployeeInfo/Create", Employee,
+            function (data) {
+                if (data != null) {
+                    alert(location.href);
+                    location = location.href;
+                    //  window.location.reload();
+                }
+            }, 'json');
+        }
+    }
+
+    $(document).ready(function () {
+        //Dropdownlist Selectedchange event
+        $("#Country").change(function () {
+            $("#State").empty();
+            $.ajax({
+                type: 'POST',
+                url: '@Url.Action("GetStates")', // we are calling json method
+
+                dataType: 'json',
+
+                data: { id: $("#Country").val() },
+                success: function (states) {
+                    $.each(states, function (i, state) {
+                        $("#State").append('<option value="' + state.Value + '">' +
+                             state.Text + '</option>');
+
+                    });
+                },
+                error: function (ex) {
+                    alert('Failed to retrieve states.' + ex);
+                }
+            });
+            return false;
+        })
+    });
+</script>
